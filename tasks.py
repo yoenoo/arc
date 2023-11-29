@@ -15,6 +15,20 @@ def convert_to_RFC_datetime(year=1900, month=1, day=1, hour=0, minute=0):
   dt = datetime(year, month, day, hour, minute, 0, 000).isoformat() + 'Z'
   return dt
 
+# import google.oauth2.credentials
+# import google_auth_oauthlib.flow
+
+# flow = google_auth_oauthlib.flow.Flow.from_client_secrets_file(
+#   "credentials.json",
+#   scopes=SCOPES,
+# )
+# flow.redirect_uri = 'https://www.example.com/oauth2callback'
+
+# authorization_url, state = flow.authorization_url(
+#   access_type='offline',
+#   include_granted_scopes='true'
+# )
+
 def auth():
   creds = None
   if os.path.exists("token.json"):
@@ -24,7 +38,8 @@ def auth():
       creds.refresh(Request())
     else:
       flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRET_FILE, SCOPES)
-      creds = flow.run_local_server(port=0)
+      creds = flow.credentials
+      #creds = flow.run_local_server(port=0)
 
     with open("token.json", "w") as f:
       f.write(creds.to_json())
