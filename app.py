@@ -27,7 +27,7 @@ google_api_creds = st.file_uploader("Upload your Google API client secret file:"
 print(google_api_creds)
 
 if google_api_creds is not None:
-  with open("credentials_test.json", "w") as f:
+  with open("credentials.json", "w") as f:
     from io import StringIO
     creds = StringIO(google_api_creds.getvalue().decode("utf-8"))
     f.write(creds.read())
