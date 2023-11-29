@@ -8,7 +8,7 @@ client = OpenAI()
 
 
 def generate_summary(text):
-  with open("./prompts/openai_system_prompt") as f:
+  with open("./prompts/openai_system_prompt.sample") as f:
     content = f.read().strip()
 
   response = client.chat.completions.create(
