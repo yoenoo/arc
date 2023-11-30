@@ -85,12 +85,16 @@ def get_summary(url):
 @app.route('/', methods=['POST'])
 def my_form_post():
   url = request.form['url']
-  date = request.form['calendar']
+  _date = request.form['calendar']
   tasklist = request.form['tasklist']
   
+  print(url, _date, tasklist)
   summary = get_summary(url)
-  due = datetime(date, "%Y-%m-%d")
+  print(summary)
+  due = datetime(_date, "%Y-%m-%d")
+  print(due)
   due = convert_to_RFC_datetime(due.year, due.month, due.day)
+  print(due)
   create_task(tasklist, summary, url, due)
   return f"Below summary is saved to your Google Tasks ({tasklist}): {summary}"
 
