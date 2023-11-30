@@ -92,7 +92,7 @@ def my_form_post():
   due = datetime(date, "%Y-%m-%d")
   due = convert_to_RFC_datetime(due.year, due.month, due.day)
   create_task(tasklist, summary, url, due)
-  return f"Below summary is saved to your Google Tasks ({tasklist_name}): {summary}"
+  return f"Below summary is saved to your Google Tasks ({tasklist}): {summary}"
 
 
 @app.route('/test')
