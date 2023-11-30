@@ -84,6 +84,7 @@ def get_summary(url):
 
 @app.route('/', methods=['POST'])
 def my_form_post():
+  return request.form
   url = request.form['url']
   _date = request.form['calendar']
   tasklist = request.form['tasklist']
