@@ -44,7 +44,7 @@ with open("client_secret.json", "w") as f:
   json.dump(secret, f)
 
 @app.route('/')
-def demo():
+def index():
   if 'credentials' not in flask.session:
     return flask.redirect('authorize')
 
