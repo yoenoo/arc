@@ -49,6 +49,8 @@ def index():
     **flask.session['credentials']) 
 
   tasklists = get_tasklists(credentials)
+  return render_template('index.html', tasklists=tasklists)
+
   return f"""
   <form method="POST">
     <input name="text">
