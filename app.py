@@ -229,7 +229,7 @@ def get_tasklists(credentials):
 
 def create_task(credentials, tasklist, title, url, due):
   service = build(API_SERVICE_NAME, API_VERSION, credentials=credentials)
-  tasklists = get_tasklists()
+  tasklists = get_tasklists(credentials)
   tasklist_id = None
   for tasklist_item in tasklists:
     if tasklist_item["kind"] == "tasks#taskList" and tasklist_item["title"] == tasklist:
