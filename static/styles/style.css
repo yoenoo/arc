@@ -1,0 +1,33 @@
+html, body {
+  height: 100%;
+}
+  /* background: linear-gradient(320deg, #0d6ac3, #c87ae3, #fd9101); */
+
+html {
+  display: table;
+  margin: auto;
+  /* background-color: #FFFFF7; */
+  background-color: #FAF9F6;
+}
+
+body {
+  display: table-cell;
+  vertical-align: middle;
+  /* background-image: linear-gradient(to right, #DECBA4, #3E5151); */
+}
+
+form {
+  text-align: center;
+}
+
+input, select {
+  border-radius: 4px;
+}
+
+.som {
+  border-radius: 10px;
+  background: #2f2f2f;
+  color: #fff;
+  height: 33px;
+  width: 40%;
+}

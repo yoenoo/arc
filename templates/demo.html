@@ -3,6 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Maven+Pro">
+  <style>
+  body {
+    font-family: "Maven Pro", serif;
+  }
+  </style>
   <title>🧊 Backdrop</title>
 </head>
 <body>
@@ -10,7 +17,7 @@
   <form method="POST">
     <label>Place the url of the YouTube Shorts below:</label>
     <br>
-    <input name="url", size=50>
+    <input name="url", size=50, id="url">
     <br>
     <br>
     <label>Select the date for the reminder:</label>
@@ -27,7 +34,7 @@
     </select>
     <br>
     <br>
-    <input type="submit">
+    <input type="submit" class="som" value="Submit">
   </form>
 </body>
 </html>

@@ -12,9 +12,9 @@ from googleapiclient.errors import HttpError
 
 import flask
 from flask import Flask, request, render_template
-from scrape import download_youtube_shorts
-from whisper import speech2text
-from chatcompletion import generate_summary
+# from scrape import download_youtube_shorts
+# from whisper import speech2text
+# from chatcompletion import generate_summary
 # from tasks import get_tasklists, create_task, convert_to_RFC_datetime
 
 CLIENT_ID = os.getenv("CLIENT_ID")
@@ -28,6 +28,7 @@ SCOPES = ["https://www.googleapis.com/auth/tasks"]
 
 app = Flask(__name__)
 app.secret_key = "placeholder" 
+
 
 with open("client_secret.json", "w") as f:
   print(CLIENT_ID, CLIENT_SECRET, PROJECT_ID)
