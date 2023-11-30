@@ -87,6 +87,7 @@ def my_form_post():
   url = request.form['url']
   _date = request.form['calendar']
   tasklist = request.form['tasklist']
+  return (url, _date, tasklist)
   
   print(url, _date, tasklist)
   summary = get_summary(url)
