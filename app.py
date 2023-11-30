@@ -3,6 +3,12 @@ import flask
 from flask import Flask, request, render_template
 import requests
 
+from datetime import datetime
+from scrape import download_youtube_shorts
+from whisper import speech2text
+from chatcompletion import generate_summary
+from tasks import get_tasklists, create_task, convert_to_RFC_datetime
+
 import google.oauth2.credentials
 import google_auth_oauthlib.flow
 # import googleapiclient.discovery
@@ -48,7 +54,8 @@ def index():
   credentials = google.oauth2.credentials.Credentials(
     **flask.session['credentials']) 
 
-  tasklists = get_tasklists(credentials)
+  tasklist_items = get_tasklists(credentials)
+  tasklists = [x["title"] for x in tasklist_items]
   return render_template('index.html', tasklists=tasklists)
 
   return f"""
@@ -69,12 +76,24 @@ def index():
   # return render_template("index.html")
   # return print_index_table()
 
+def get_summary(url):
+  fpath = download_youtube_shorts(url)
+  txt = speech2text(fpath)
+  summary = generate_summary(txt)
+  return summary
+
 @app.route('/', methods=['POST'])
 def my_form_post():
-  text = request.form['text']
+  url = request.form['url']
   date = request.form['calendar']
   tasklist = request.form['tasklist']
-  return request.form
+  
+  summary = get_summary(url)
+  due = datetime(date, "%Y-%m-%d")
+  due = convert_to_RFC_datetime(due.year, due.month, due.day)
+  create_task(tasklist, summary, url, due)
+  return f"Below summary is saved to your Google Tasks ({tasklist_name}): {summary}"
+
 
 @app.route('/test')
 def test_api_request():
