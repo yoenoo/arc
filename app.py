@@ -82,6 +82,16 @@ def get_summary(url):
   summary = generate_summary(txt)
   return summary
 
+def summary_to_html(summary):
+  template = ""
+  template += "<ul>"
+  for item in summary.strip().split("-"):
+    if item.strip() != "":
+      template += f"<li>{item.strip()}</li>"
+
+  template += "</ul>"
+  return template
+
 @app.route('/', methods=['POST'])
 def my_form_post():
   url = request.form['url']
@@ -100,7 +110,10 @@ def my_form_post():
   due = convert_to_RFC_datetime(due.year, due.month, due.day)
   print(due)
   create_task(credentials, tasklist, summary, url, due)
-  return f"Below summary is saved to your Google Tasks ({tasklist}): {summary}"
+  out = f"<div>Below summary is saved to your Google Tasks ({tasklist})"
+  out += summary_to_html(summary)
+  out += "</div>"
+  return out
 
 
 @app.route('/test')
