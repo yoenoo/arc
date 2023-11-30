@@ -1,6 +1,6 @@
 import os
 import flask
-from flask import Flask, request
+from flask import Flask, request, render_template
 import requests
 
 import google.oauth2.credentials
@@ -49,8 +49,30 @@ def index():
     **flask.session['credentials']) 
 
   tasklists = get_tasklists(credentials)
-  return tasklists
+  return f"""
+  <form method="POST">
+    <input name="text">
+    <input name="calendar" type="date" />
+    <input name="tasklist">
+
+    <p>{tasklists}</p>
+    <select id="tasklist">
+      <option value="My Task">My Task</option>
+      <option value="backdrop">backdrop</option>
+    </select>
+
+    <input type="submit">
+  </form>
+  """
+  # return render_template("index.html")
   # return print_index_table()
+
+@app.route('/', methods=['POST'])
+def my_form_post():
+  text = request.form['text']
+  date = request.form['calendar']
+  tasklist = request.form['tasklist']
+  return request.form
 
 @app.route('/test')
 def test_api_request():
@@ -131,7 +153,7 @@ def oauth2callback():
   credentials = flow.credentials
   flask.session['credentials'] = credentials_to_dict(credentials)
 
-  return flask.redirect(flask.url_for('test_api_request'))
+  return flask.redirect(flask.url_for('index'))
 
 
 @app.route('/revoke')
