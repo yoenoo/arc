@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>🤖 Youtube Shorts Summary Generator</h2>
+  <form method="POST">
+    <label>Place the url of the YouTube Shorts below:</label>
+    <br>
+    <input name="url", size=50>
+    <br>
+    <br>
+    <label>Select the date for the reminder:</label>
+    <br>
+    <input name="calendar" type="date" />
+    <br>
+    <br>
+    <label>Select the task list to genereate reminders under:</label>
+    <br>
+    <select name="tasklist" id="tasklist">
+      {% for tasklist in tasklists %}
+        <option value="{{tasklist}}">{{tasklist}}</option>
+      {% endfor %}
+    </select>
+    <br>
+    <br>
+    <input type="submit">
+  </form>
+</body>
+</html>

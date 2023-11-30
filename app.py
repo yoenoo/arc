@@ -56,7 +56,7 @@ def index():
 
   tasklist_items = get_tasklists(credentials)
   tasklists = [x["title"] for x in tasklist_items]
-  return render_template('index.html', tasklists=tasklists)
+  return render_template('demo.html', tasklists=tasklists)
 
   return f"""
   <form method="POST">
