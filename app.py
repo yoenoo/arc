@@ -88,6 +88,10 @@ def my_form_post():
   _date = request.form['calendar']
   tasklist = request.form['tasklist']
   
+  credentials = google.oauth2.credentials.Credentials(
+    **flask.session['credentials']) 
+
+  
   print(url, _date, tasklist)
   summary = get_summary(url)
   print(summary)
@@ -95,7 +99,7 @@ def my_form_post():
   print(due)
   due = convert_to_RFC_datetime(due.year, due.month, due.day)
   print(due)
-  create_task(tasklist, summary, url, due)
+  create_task(credentials, tasklist, summary, url, due)
   return f"Below summary is saved to your Google Tasks ({tasklist}): {summary}"
 
 
