@@ -2,7 +2,7 @@
   <input name="url">
   <input name="calendar" type="date" />
 
-  <select id="tasklist">
+  <select name="tasklist" id="tasklist">
     {% for tasklist in tasklists %}
       <option value={{tasklist}}>{{tasklist}}</option>
     {% endfor %}
