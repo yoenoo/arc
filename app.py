@@ -95,7 +95,7 @@ def my_form_post():
   print(url, _date, tasklist)
   summary = get_summary(url)
   print(summary)
-  due = datetime(_date, "%Y-%m-%d")
+  due = datetime.strptime(_date, "%Y-%m-%d")
   print(due)
   due = convert_to_RFC_datetime(due.year, due.month, due.day)
   print(due)
