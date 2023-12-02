@@ -25,13 +25,18 @@
     <input name="calendar" type="date" />
     <br>
     <br>
-    <label>Select the task list to genereate reminders under:</label>
-    <br>
-    <select name="tasklist" id="tasklist">
-      {% for tasklist in tasklists %}
-        <option value="{{tasklist}}">{{tasklist}}</option>
-      {% endfor %}
-    </select>
+    {% if tasklists|length > 0 %}
+      <label>Select the task list to genereate reminders under:</label>
+      <br>
+      <select name="tasklist" id="tasklist">
+        {% for tasklist in tasklists %}
+          <option value="{{tasklist}}">{{tasklist}}</option>
+        {% endfor %}
+      </select>
+    {% else %}
+      <p>You need to log in before you can use the service!!</p>
+      <p>Please go to /authorize to authenticate with your Google account</p> 
+    {% endif %}
     <br>
     <br>
     <input type="submit" class="som" value="Submit">

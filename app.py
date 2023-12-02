@@ -47,12 +47,13 @@ with open("client_secret.json", "w") as f:
 @app.route('/')
 def index():
   if 'credentials' not in flask.session:
-    return flask.redirect('authorize')
+    tasklists = []
+    # return flask.redirect('authorize')
+  else:
+    credentials = google.oauth2.credentials.Credentials(**flask.session["credentials"]) 
+    tasklist_items = get_tasklists(credentials)
+    tasklists = [x["title"] for x in tasklist_items]
 
-  credentials = google.oauth2.credentials.Credentials(**flask.session["credentials"]) 
-
-  tasklist_items = get_tasklists(credentials)
-  tasklists = [x["title"] for x in tasklist_items]
   return render_template("demo.html", tasklists=tasklists)
 
 @app.route('/', methods=['POST'])
