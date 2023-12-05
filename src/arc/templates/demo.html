@@ -13,7 +13,7 @@
   <title>🧊 Backdrop</title>
 </head>
 <body>
-  <h2>🤖 Youtube Shorts Summary Generator</h2>
+  <h2>🤖 Arc: Youtube Shorts Summary Generator</h2>
   {% if tasklists|length > 0 %}
     <form method="POST">
       <label>Place the url of the YouTube Shorts below:</label>
@@ -39,7 +39,8 @@
     </form>
   {% else %}
     <p>You need to log in before you can use the service!!</p>
-    <p>Please go to /authorize to authenticate with your Google account</p> 
+    <p><a href="/authorize">Log in to Arc</a></p>
+    <!-- <p>Please go to <a href="/authorize"></a> to authenticate with your Google account</p>  -->
   {% endif %}
 </body>
 </html>
