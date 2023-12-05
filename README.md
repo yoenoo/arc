@@ -31,7 +31,7 @@ Before running the app, make sure you add the url of the app as the <b>Authorize
 
 ## Demo
 <p align="center">
-  <img height="300px" src="screenshot.png">
+  <img height="300px" src="src/arc/static/screenshot.png">
 </p>
 
 For the full video explanation, please watch our demo: [YouTube Demo](https://youtu.be/1iQ9Bt31_5w)

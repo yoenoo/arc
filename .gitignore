@@ -1,12 +1,6 @@
-.env
-*.json
 .DS_STORE
 __pycache__/
 .ipynb_checkpoints/
 *.ipynb
-ext/
-chrome_extension/
-webpack-demo/
-prompts/openai_system_prompt
-shorts/
-_bin/
+src/arc/run.sh
+docker_deploy
