@@ -1,5 +1,5 @@
 # arc
-arc is a speech-to-text AI summarization tool for short-form videos.
+arc is a video-to-text AI summarization tool for short-form videos.
 
 ## Setup
 The application requires 4 things: (1) Google Cloud OAuth CLIENT_ID, CLIENT_SECRET, and PROJECT_ID (2) OpenAI API key. 
